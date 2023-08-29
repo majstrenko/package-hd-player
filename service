@@ -1,9 +1,24 @@
 from hosted import device, node, config, time, threading
-#config.restart_on_update()
+config.restart_on_update()
 
 
+device.gpio.monitor(config.pin_16)
 
-device.gpio.setup_pin(26, direction="out")
-time.sleep(20)
-device.gpio.set_pin_value(26, high=True)
+
+#sixteen_is_on = False
+
+
+def handle_pin_16():
+    global sixteen_is_on
+    if not sixteen_is_on:
+        sixteen_is_on = True
+        print("pin 16 touched")
+        device.gpio.setup_pin(20, direction="out")
+        device.gpio.setup_pin(26, direction="out")
+        device.gpio.set_pin_value(26, high=True)
+        time.sleep(20)
+        device.gpio.set_pin_value(20, high=True)
+        device.gpio.set_pin_value(26, high=True)
+        device.gpio.setup_pin(26, direction="out")
+        sixteen_is_on = False
         
