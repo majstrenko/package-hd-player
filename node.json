@@ -3,6 +3,15 @@
     "options": [{
         "title": "Configuration",
         "type": "section"
+    },"permissions": {
+        "gpio": "Access GPIO"
+      },
+    "options": [{
+        "title": "MONITOR PIN 16",
+        "ui_width": 4,
+        "name": "pin_16",
+        "type": "integer",
+        "default": 16
     }, {
         "title": "Switch time",
         "ui_width": 4,
