@@ -1,71 +1,9 @@
 from hosted import device, node, config, time, threading
-config.restart_on_update()
+#config.restart_on_update()
 
 
-device.gpio.monitor(config.pin_16)
-device.gpio.monitor(config.pin_17)
-device.gpio.monitor(config.pin_18)
-device.gpio.monitor(config.pin_19)
 
-
-sixteen_is_on = False
-seventeen_is_on = False
-eighteen_is_on = False
-nineteen_is_on = False
-
-
-def handle_pin_16():
-    global sixteen_is_on
-    if not sixteen_is_on:
-        sixteen_is_on = True
-        print("pin 16 touched")
-        device.gpio.setup_pin(20, direction="out")
-        device.gpio.setup_pin(26, direction="out")
-        device.gpio.set_pin_value(26, high=True)
-        time.sleep(20)
-        device.gpio.set_pin_value(20, high=True)
-        device.gpio.set_pin_value(26, high=True)
-        device.gpio.setup_pin(26, direction="out")
-        sixteen_is_on = False
+device.gpio.setup_pin(26, direction="out")
+time.sleep(20)
+device.gpio.set_pin_value(26, high=True)
         
-
-def handle_pin_17():
-    global seventeen_is_on
-    if not seventeen_is_on:
-        seventeen_is_on = True
-        print("pin 17 touched")
-        device.gpio.setup_pin(21, direction="out")
-        time.sleep(20)
-        device.gpio.set_pin_value(21, high=True)
-        seventeen_is_on = False
-
-def handle_pin_18():
-    global eighteen_is_on
-    if not eighteen_is_on:
-        eighteen_is_on = True
-        print("pin 18 touched")
-        device.gpio.setup_pin(22, direction="out")
-        time.sleep(20)
-        device.gpio.set_pin_value(22, high=True)
-        eighteen_is_on = False
-
-def handle_pin_19():
-    global nineteen_is_on
-    if not nineteen_is_on:
-        nineteen_is_on = True
-        print("pin 19 touched")
-        device.gpio.setup_pin(23, direction="out")
-        time.sleep(20)
-        device.gpio.set_pin_value(23, high=True)
-        nineteen_is_on = False
-
-for pin, state in device.gpio.poll_forever():
-    if state == 1:
-        if pin == 16:
-            threading.Thread(target=handle_pin_16).start()
-        elif pin == 19:
-            threading.Thread(target=handle_pin_19).start()
-        elif pin == 17:
-            threading.Thread(target=handle_pin_17).start()
-        elif pin == 18:
-            threading.Thread(target=handle_pin_18).start()
