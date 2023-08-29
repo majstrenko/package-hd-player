@@ -3,7 +3,8 @@
     "options": [{
         "title": "Configuration",
         "type": "section"
-    },"permissions":
+    },
+        "permissions":
         {
         "gpio": "Access GPIO"
       },
