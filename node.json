@@ -3,7 +3,35 @@
     "options": [{
         "title": "Configuration",
         "type": "section"
-    }
+    }, "name": "PIN 26 OFF",
+    "permissions": {
+        "gpio": "Access GPIO"
+      },
+    "options": [{
+        "title": "MONITOR PIN 16",
+        "ui_width": 4,
+        "name": "pin_16",
+        "type": "integer",
+        "default": 16
+    },{
+        "title": "MONITOR PIN 17",
+        "ui_width": 4,
+        "name": "pin_17",
+        "type": "integer",
+        "default": 17
+    },{
+        "title": "MONITOR PIN 18",
+        "ui_width": 4,
+        "name": "pin_18",
+        "type": "integer",
+        "default": 18
+    },{
+        "title": "MONITOR PIN 19",
+        "ui_width": 4,
+        "name": "pin_19",
+        "type": "integer",
+        "default": 19
+    }]
         , {
         "title": "Switch time",
         "ui_width": 4,
