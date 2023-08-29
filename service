@@ -1,5 +1,5 @@
 from hosted import device, node, config, time, threading
-config.restart_on_update()
+#config.restart_on_update()
 
 
 device.gpio.monitor(config.pin_16)
