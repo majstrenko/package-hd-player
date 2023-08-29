@@ -3,7 +3,8 @@
     "options": [{
         "title": "Configuration",
         "type": "section"
-    }, "name": "PIN 26 OFF",
+    }, 
+    "name": "PIN 26 OFF",
     "permissions": {
         "gpio": "Access GPIO"
       },
